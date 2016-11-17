@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE PACKAGE SYSTEM "package.dtd">
+<PACKAGE NAME="org.formation.generation.swt" METAMODEL="UI" NUMBER="11"
+>
+	<fileHeader version="6" toolName="Mia-Generation" toolVersion="9.2.1"/>
+	<SCENARIO NAME="scenarUI" VISIBILITY="public" META_OBJECT="UIApplication" CATEGORY="default">
+		<SERVICE_CALL NAME="current" PACKAGE="System" META_OBJECT="UIApplication"/>
+		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="org.formation.generation.swt" META_OBJECT="UIApplication" CATEGORY="default" NAME="ft2" PARAM_COUNT="0"/>
+	</SCENARIO>
+	<SCENARIO NAME="Scenario01" VISIBILITY="public" META_OBJECT="View" CATEGORY="default">
+		<SERVICE_CALL NAME="current" PACKAGE="System" META_OBJECT="View"/>
+		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="org.formation.generation.swt" META_OBJECT="View" CATEGORY="default" NAME="JavaShell" PARAM_COUNT="0"/>
+	</SCENARIO>
+	<SCRIPT NAME="ButtonTemplate" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+	private Button btn[[name]];
+	
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="Q*132" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+public void [[current.name]]() {
+		[[BeginTag]]
+		[[EndTag]]
+	
+	}
+	
+]]></TEXT>
+		<PROPERTY NAME="BeginTag"/>
+		<PROPERTY NAME="EndTag"/>
+	</SCRIPT>
+	<SCRIPT NAME="Q*132$BeginTag" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+// Start of user code  for [[current.name]]
+
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="Q*132$EndTag" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+// End of user code
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="button13" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+btn[[current.name]] = new Button(grpButtons, SWT.NONE);
+		btn[[current.name]].setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, true, 1, 1));
+		btn[[current.name]].setText("[[current.name]]");
+		btn[[current.name]].addSelectionListener(new SelectionAdapter(){
+		        public void widgetSelected(SelectionEvent event)
+		        {
+		          [[current.name]]();
+		        }
+		      });
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="ft2" META_OBJECT="UIApplication" CATEGORY="default" FILE_ENCODING="UTF-8" VISIBILITY="private">
+		<TEXT><![CDATA[
+package com.mia.formation.generation.ui;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Shell;
+
+public class [[]]  Shell {
+[[actions.ButtonTemplate]]
+
+	/**
+	 * Create the shell.
+	 * @param display
+	 */
+	public [[current.name]](Display display) {
+		super(display, SWT.SHELL_TRIM);
+		createContents();
+	}
+
+	/**
+	 * Create contents of the shell.
+	 */
+	protected void createContents() {
+		setText("[[description]]");
+		setSize(450, 300);
+		setLayout(new GridLayout(2, false));
+		
+		Group grpButtons = new Group(this, SWT.NONE);
+		grpButtons.setLayout(new GridLayout(2, false));
+		grpButtons.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
+		[[actions.button13]]
+	}
+		
+	@Override
+	 protected void checkSubclass() {
+	 
+	 }
+	
+	[[actions.Q*132]]
+		 
+	 public static void main(String[] args) {
+		Display display = Display.getDefault();
+
+		[[current.name]] instance[[current.name]] = new [[current.name]](display);
+		
+		instance[[current.name]].open();
+		instance[[current.name]].layout();
+		
+		while (!instance[[current.name]].isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+	}
+}
+
+]]></TEXT>
+		<PROPERTY NAME="Filename"/>
+	</SCRIPT>
+	<SCRIPT NAME="ft2$Filename" META_OBJECT="UIApplication" CATEGORY="default">
+		<TEXT><![CDATA[
+com/mia/formation/generation/ui/bis/[[current.name]].java
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="JavaShell" META_OBJECT="View" CATEGORY="default" FILE_ENCODING="UTF-8" VISIBILITY="private">
+		<TEXT><![CDATA[
+package com.mia.formation.generation.ui;
+
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+[[conditionbutton]]
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Group;
+import org.eclipse.swt.widgets.Shell;
+
+public class [[current.name]] extends Shell {
+[[actions.ButtonTemplate]]
+
+	/**
+	 * Create the shell.
+	 * @param display
+	 */
+	public [[current.name]](Display display) {
+		super(display, SWT.SHELL_TRIM);
+		createContents();
+	}
+
+	/**
+	 * Create contents of the shell.
+	 */
+	protected void createContents() {
+		setText("[[description]]");
+		setSize(450, 300);
+		setLayout(new GridLayout(2, false));
+		
+		Group grpButtons = new Group(this, SWT.NONE);
+		grpButtons.setLayout(new GridLayout(2, false));
+		grpButtons.setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true, 2, 1));
+		[[actions.button13]]
+	}
+		
+	@Override
+	 protected void checkSubclass() {
+	 
+	 }
+	
+	[[actions.Q*132]]
+		 
+	 public static void main(String[] args) {
+		Display display = Display.getDefault();
+
+		[[current.name]] instance[[current.name]] = new [[current.name]](display);
+		
+		instance[[current.name]].open();
+		instance[[current.name]].layout();
+		
+		while (!instance[[current.name]].isDisposed()) {
+			if (!display.readAndDispatch()) {
+				display.sleep();
+			}
+		}
+	}
+}
+
+]]></TEXT>
+		<PROPERTY NAME="Filename"/>
+	</SCRIPT>
+	<SCRIPT NAME="JavaShell$Filename" META_OBJECT="View" CATEGORY="default">
+		<TEXT><![CDATA[
+com/mia/formation/generation/ui/[[current.name]].java
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="conditionbutton" META_OBJECT="View" CATEGORY="default">
+		<TEXT><![CDATA[
+import org.eclipse.swt.widgets.Button;
+]]></TEXT>
+		<PROPERTY NAME="Precondition"/>
+	</SCRIPT>
+	<MACRO_CONDITION NAME="conditionbutton$Precondition" META_OBJECT="View" CATEGORY="default">
+		<TEXT><![CDATA[
+return !current.getActions().isEmpty();
+]]></TEXT>
+	</MACRO_CONDITION>
+	<METAMODELS_INFO_CACHE>
+		<METAMODEL_IMPORT CLAUSE="ui.*" RELATED_METAS="Action,UIApplication,View,NamedElement"/>
+		<METAMODEL_CONTAINER_QNAME CQNAME="ui" RELATED_METAS="Action,UIApplication,View,NamedElement"/>
+	</METAMODELS_INFO_CACHE>
+</PACKAGE>
