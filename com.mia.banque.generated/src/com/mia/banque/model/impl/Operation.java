@@ -1,8 +1,8 @@
-package src.com.mia.banque.model.impl;
+package com.mia.banque.model.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Operation implements src.com.mia.banque.model.IOperation {
+public class Operation implements com.mia.banque.model.IOperation {
 
 			private String Numero;
 		

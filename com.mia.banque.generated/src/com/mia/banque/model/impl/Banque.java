@@ -1,20 +1,20 @@
-package src.com.mia.banque.model.impl;
+package com.mia.banque.model.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Banque implements src.com.mia.banque.model.IBanque {
+public class Banque implements com.mia.banque.model.IBanque {
 
 	
 	
-	private List<src.com.mia.banque.model.IClient> listClient;
+	private List<com.mia.banque.model.IClient> listClient;
 
-public List<src.com.mia.banque.model.IClient> getClients(){
+public List<com.mia.banque.model.IClient> getClients(){
 if (this.listClient == null) {
-			this.listClient = new ArrayList<src.com.mia.banque.model.IClient>();
+			this.listClient = new ArrayList<com.mia.banque.model.IClient>();
 		}
 		return this.listClient;
 }
-public void setClient(List<src.com.mia.banque.model.IClient> newValue){
+public void setClient(List<com.mia.banque.model.IClient> newValue){
 	this.listClient = newValue;
 }	
 	

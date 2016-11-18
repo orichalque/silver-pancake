@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE PACKAGE SYSTEM "package.dtd">
+<PACKAGE NAME="Controller" METAMODEL="MVC" NUMBER="7"
+>
+	<fileHeader version="6" toolName="Mia-Generation" toolVersion="9.2.1"/>
+	<SCENARIO NAME="generation controller" VISIBILITY="public" META_OBJECT="View" CATEGORY="default">
+		<SERVICE_CALL NAME="current" PACKAGE="System" META_OBJECT="View"/>
+		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="Controller" META_OBJECT="View" CATEGORY="default" NAME="generation impl controller" PARAM_COUNT="0"/>
+		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="Controller" META_OBJECT="View" CATEGORY="default" NAME="generation interface controller" PARAM_COUNT="0"/>
+	</SCENARIO>
+	<SCRIPT NAME="controller methods" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+	public void [[current.name]]() {
+	[[BeginTag]]
+	
+	[[EndTag]]
+	}
+]]></TEXT>
+		<PROPERTY NAME="BeginTag"/>
+		<PROPERTY NAME="EndTag"/>
+	</SCRIPT>
+	<SCRIPT NAME="controller methods$BeginTag" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+// Start of user code for [[current.name]]
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="controller methods$EndTag" META_OBJECT="Action" CATEGORY="default">
+		<TEXT><![CDATA[
+// End of user code for [[current.name]]
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="generation impl controller" META_OBJECT="View" CATEGORY="default" FILE_ENCODING="UTF-8" VISIBILITY="public">
+		<TEXT><![CDATA[
+package [[model.package dot separator]].ui.controller.swt;
+import [[model.package dot separator]].model.I[[current.model.name]];
+import [[model.package dot separator]].ui.view.swt.[[current.name]];
+import  [[model.package dot separator]].ui.controller.I[[current.model.name]]Controller;
+
+import org.eclipse.swt.widgets.Display;
+
+public class [[current.model.name]]Controller implements I[[current.model.name]]Controller {
+		private [[current.name]] view;
+		private I[[current.model.name]] model;
+		
+		public [[current.model.name]]Controller([[model.package dot separator]].model.I[[current.model.name]] model){
+				this.model = model;
+		}
+		
+		public void initView() {
+			Display display = Display.getDefault();
+					
+			this.view = new  [[current.name]](display, this.model, this);
+			this.view.open();
+			this.view.layout();
+			
+			while (!this.view.isDisposed()) {
+				if (!display.readAndDispatch()) {
+					display.sleep();
+				}
+			}
+		}
+			
+		[[actions.controller methods]]
+			
+	}
+		
+		
+		
+]]></TEXT>
+		<PROPERTY NAME="Filename"/>
+	</SCRIPT>
+	<SCRIPT NAME="generation impl controller$Filename" META_OBJECT="View" CATEGORY="default">
+		<TEXT><![CDATA[
+[[current.model.package slash separator]]/ui/controller/swt/[[current.model.name]]Controller.java
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="generation interface controller" META_OBJECT="View" CATEGORY="default" FILE_ENCODING="UTF-8" VISIBILITY="public">
+		<TEXT><![CDATA[
+package [[model.package dot separator]].ui.controller;
+
+
+public interface I[[current.model.name]]Controller {
+	
+[[current.actions.view interface methods]]
+
+	public void initView();
+			
+}
+]]></TEXT>
+		<PROPERTY NAME="Filename"/>
+	</SCRIPT>
+	<SCRIPT NAME="generation interface controller$Filename" META_OBJECT="View" CATEGORY="default">
+		<TEXT><![CDATA[
+[[model.package slash separator]]/ui/controller/I[[current.model.name]]Controller.java
+]]></TEXT>
+	</SCRIPT>
+	<METAMODELS_INFO_CACHE>
+		<METAMODEL_IMPORT CLAUSE="com.mia.formation.mvc.*" RELATED_METAS="Action,Model,ModelProperty,UIApplication,View,NamedElement"/>
+		<METAMODEL_CONTAINER_QNAME CQNAME="mvc" RELATED_METAS="Action,Model,ModelProperty,UIApplication,View,NamedElement"/>
+	</METAMODELS_INFO_CACHE>
+</PACKAGE>

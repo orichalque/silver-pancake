@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE PACKAGE SYSTEM "package.dtd">
+<PACKAGE NAME="Model" METAMODEL="MVC" NUMBER="16"
+>
+	<fileHeader version="6" toolName="Mia-Generation" toolVersion="9.2.1"/>
+	<SCENARIO NAME="model generation" VISIBILITY="public" META_OBJECT="Model" CATEGORY="default">
+		<SERVICE_CALL NAME="current" PACKAGE="System" META_OBJECT="Model"/>
+		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="Model" META_OBJECT="Model" CATEGORY="default" NAME="generation des implementations" PARAM_COUNT="0"/>
+		<GENERATION_STEP TYPE="FileTemplate" PACKAGE="Model" META_OBJECT="Model" CATEGORY="default" NAME="generation des interfaces" PARAM_COUNT="0"/>
+	</SCENARIO>
+	<SCRIPT NAME="attributs accessor list" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+public List<I[[current.ownedElements.name@¤] get[[current.ownedElements.name]]s();
+public void set[[current.ownedElements.name]](List<I[[current.ownedElements.name@¤] newValue);
+]]></TEXT>
+		<PROPERTY NAME="Precondition"/>
+	</SCRIPT>
+	<SCRIPT NAME="attributs accessor list impl" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+private List<[[package dot separator]].model.I[[current.ownedElements.name@¤] list[[current.ownedElements.name]];
+
+public List<[[package dot separator]].model.I[[current.ownedElements.name@¤] get[[current.ownedElements.name]]s(){
+if (this.list[[current.ownedElements.name]] == null) {
+			this.list[[current.ownedElements.name]] = new ArrayList<[[package dot separator]].model.I[[current.ownedElements.name@¤]();
+		}
+		return this.list[[current.ownedElements.name]];
+}
+public void set[[current.ownedElements.name]](List<[[package dot separator]].model.I[[current.ownedElements.name@¤] newValue){
+	this.list[[current.ownedElements.name]] = newValue;
+}
+]]></TEXT>
+		<PROPERTY NAME="Precondition"/>
+	</SCRIPT>
+	<MACRO_CONDITION NAME="attributs accessor list impl$Precondition" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+return current.getOwnedElements().size() > 0;
+]]></TEXT>
+	</MACRO_CONDITION>
+	<MACRO_CONDITION NAME="attributs accessor list$Precondition" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+return current.getOwnedElements().size()>0;
+]]></TEXT>
+	</MACRO_CONDITION>
+	<SCRIPT NAME="generation des implementations" META_OBJECT="Model" CATEGORY="default" FILE_ENCODING="UTF-8" VISIBILITY="public">
+		<TEXT><![CDATA[
+package [[package dot separator]].model.impl;
+[[import list impl]]
+
+public class [[current.name]] implements [[package dot separator]].model.I[[current.name]] {
+
+	[[current.properties.attributs impl]]
+	
+	[[current.attributs accessor list impl]]	
+	
+}
+
+
+]]></TEXT>
+		<PROPERTY NAME="Filename"/>
+	</SCRIPT>
+	<SCRIPT NAME="generation des implementations$Filename" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+[[package slash separator]]/model/impl/[[current.name]].java
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="generation des interfaces" META_OBJECT="Model" CATEGORY="default" FILE_ENCODING="UTF-8" VISIBILITY="public">
+		<TEXT><![CDATA[
+package [[package dot separator]].model;
+[[import list]]
+
+public interface I[[current.name]] {
+	[[current.properties.attributs]]
+	
+	[[current.attributs accessor list]]
+}
+]]></TEXT>
+		<PROPERTY NAME="Filename"/>
+	</SCRIPT>
+	<SCRIPT NAME="generation des interfaces$Filename" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+[[package slash separator]]/model/I[[current.name]].java
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="import list" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+import java.util.List;
+]]></TEXT>
+		<PROPERTY NAME="Precondition"/>
+	</SCRIPT>
+	<SCRIPT NAME="import list impl" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+import java.util.ArrayList;
+import java.util.List;
+
+]]></TEXT>
+		<PROPERTY NAME="Precondition"/>
+	</SCRIPT>
+	<MACRO_CONDITION NAME="import list impl$Precondition" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+return current.getOwnedElements().size() > 0;
+]]></TEXT>
+	</MACRO_CONDITION>
+	<MACRO_CONDITION NAME="import list$Precondition" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+return current.getOwnedElements().size() > 0;
+]]></TEXT>
+	</MACRO_CONDITION>
+	<SCRIPT NAME="package dot separator" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+com.mia.banque
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="package slash separator" META_OBJECT="Model" CATEGORY="default">
+		<TEXT><![CDATA[
+com/mia/banque
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="attributs" META_OBJECT="ModelProperty" CATEGORY="default">
+		<TEXT><![CDATA[
+	public void set[[current.name]](String [[current.name]]);
+	public String get[[current.name]]();
+
+]]></TEXT>
+	</SCRIPT>
+	<SCRIPT NAME="attributs impl" META_OBJECT="ModelProperty" CATEGORY="default">
+		<TEXT><![CDATA[
+		private String [[current.name]];
+		
+		public String get[[current.name]]() {
+			return this.[[current.name]];
+		}
+		
+		public void set[[current.name]](String newValue) {
+			this.[[current.name]] = newValue;
+		}
+
+
+]]></TEXT>
+	</SCRIPT>
+	<METAMODELS_INFO_CACHE>
+		<METAMODEL_IMPORT CLAUSE="com.mia.formation.mvc.*" RELATED_METAS="Action,Model,ModelProperty,UIApplication,View,NamedElement"/>
+		<METAMODEL_CONTAINER_QNAME CQNAME="mvc" RELATED_METAS="Action,Model,ModelProperty,UIApplication,View,NamedElement"/>
+	</METAMODELS_INFO_CACHE>
+</PACKAGE>

@@ -6,7 +6,9 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .,
  bin
 Bundle-Activator: com.mia.banque.generation.Activator
-Export-Package: com.mia.banque.model.hn1146716061
+Export-Package: controller.hn1664073796,
+ model.h74517257,
+ view.h2666181
 Require-Bundle: org.eclipse.core.runtime;bundle-version="3.6.0",
  com.mia.studio.common;bundle-version="9.0.0",
  com.mia.studio.engine;bundle-version="9.0.0",
@@ -20,6 +22,9 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.6.0",
  org.eclipse.emf.ecore.xmi;bundle-version="2.5.0",
  org.eclipse.jdt.core;bundle-version="3.6.0",
  com.mia.formation.mvc.metamodel,
+ com.mia.studio.empty.metamodel;bundle-version="9.0.0",
+ com.mia.studio.empty.metamodel;bundle-version="9.0.0",
+ com.mia.studio.empty.metamodel;bundle-version="9.0.0",
  com.mia.studio.empty.metamodel;bundle-version="9.0.0",
  com.mia.studio.empty.metamodel;bundle-version="9.0.0"
 Bundle-RequiredExecutionEnvironment: J2SE-1.5

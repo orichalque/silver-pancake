@@ -1,8 +1,8 @@
-package src.com.mia.banque.model.impl;
+package com.mia.banque.model.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Compte implements src.com.mia.banque.model.ICompte {
+public class Compte implements com.mia.banque.model.ICompte {
 
 			private String Numero;
 		
@@ -16,15 +16,15 @@ public class Compte implements src.com.mia.banque.model.ICompte {
 
 
 	
-	private List<src.com.mia.banque.model.IOperation> listOperation;
+	private List<com.mia.banque.model.IOperation> listOperation;
 
-public List<src.com.mia.banque.model.IOperation> getOperations(){
+public List<com.mia.banque.model.IOperation> getOperations(){
 if (this.listOperation == null) {
-			this.listOperation = new ArrayList<src.com.mia.banque.model.IOperation>();
+			this.listOperation = new ArrayList<com.mia.banque.model.IOperation>();
 		}
 		return this.listOperation;
 }
-public void setOperation(List<src.com.mia.banque.model.IOperation> newValue){
+public void setOperation(List<com.mia.banque.model.IOperation> newValue){
 	this.listOperation = newValue;
 }	
 	

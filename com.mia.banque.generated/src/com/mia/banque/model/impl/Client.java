@@ -1,8 +1,8 @@
-package src.com.mia.banque.model.impl;
+package com.mia.banque.model.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Client implements src.com.mia.banque.model.IClient {
+public class Client implements com.mia.banque.model.IClient {
 
 			private String Nom;
 		
@@ -36,15 +36,15 @@ public class Client implements src.com.mia.banque.model.IClient {
 
 
 	
-	private List<src.com.mia.banque.model.ICompte> listCompte;
+	private List<com.mia.banque.model.ICompte> listCompte;
 
-public List<src.com.mia.banque.model.ICompte> getComptes(){
+public List<com.mia.banque.model.ICompte> getComptes(){
 if (this.listCompte == null) {
-			this.listCompte = new ArrayList<src.com.mia.banque.model.ICompte>();
+			this.listCompte = new ArrayList<com.mia.banque.model.ICompte>();
 		}
 		return this.listCompte;
 }
-public void setCompte(List<src.com.mia.banque.model.ICompte> newValue){
+public void setCompte(List<com.mia.banque.model.ICompte> newValue){
 	this.listCompte = newValue;
 }	
 	

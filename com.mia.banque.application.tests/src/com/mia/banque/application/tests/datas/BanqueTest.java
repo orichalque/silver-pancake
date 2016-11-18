@@ -43,7 +43,7 @@ public class BanqueTest {
     	
     	Operation debit1 = new Operation();
     	debit1.setMontant("-100");
-    	debit1.setNumero("Téléphone");
+    	debit1.setNumero("Tï¿½lï¿½phone");
 
     	Operation debit2 = new Operation();
     	debit2.setMontant("-400");
@@ -67,7 +67,7 @@ public class BanqueTest {
     	
     	debit1 = new Operation();
     	debit1.setMontant("-300");
-    	debit1.setNumero("Electricité");
+    	debit1.setNumero("Electricitï¿½");
 
     	compte.getOperations().add(credit);
     	compte.getOperations().add(debit1);

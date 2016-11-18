@@ -5,4 +5,13 @@
    <extension point="com.mia.studio.generation.core.generation_package">
       <package file="miaStudio/resources/com.mia.banque.model.pkg"/>
    </extension>
+   <extension point="com.mia.studio.generation.core.generation_package">
+      <package file="miaStudio/resources/Model.pkg"/>
+   </extension>
+   <extension point="com.mia.studio.generation.core.generation_package">
+      <package file="miaStudio/resources/View.pkg"/>
+   </extension>
+   <extension point="com.mia.studio.generation.core.generation_package">
+      <package file="miaStudio/resources/Controller.pkg"/>
+   </extension>
 </plugin>
